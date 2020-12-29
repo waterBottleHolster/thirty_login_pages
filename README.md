@@ -12,3 +12,5 @@ I can just change the template that is rendered in the view function.
 
 No attached stylesheets, just do all the styling in the head tag or inline.  This isn't proper, but it 
 makes testing much faster, especially on my laptop where clearing the cache everytime gets tedious.
+
+## #1
