@@ -15,3 +15,7 @@ makes testing much faster, especially on my laptop where clearing the cache ever
 
 ## #1 - Dark Theme w/ Red
 Channelled my inner Cold Lake Freeze for this one.
+
+## #2 - Vanilla Theme
+I can't figure out all of the form control formatting included in Bootstrap so I'll go back to basics.
+Pick a theme that is blue and white by default.

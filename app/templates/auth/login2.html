@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_2/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_2/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .wave-container {
+      background-color: #fff;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+    @keyframes animateWave {
+      0% {
+        transform: scale(1,0);
+      }
+      100% {
+        transform: scale(1,1);
+      }
+    }
+    .wave-container > svg {
+      display: block;
+      transform-origin: bottom;
+      animation: animateWave 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    .container-fluid {
+      padding: 0;
+    }
+    .form-control {
+      width: 90%;
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="wave-container">
+  <form method="POST" action="{{ url_for('auth.login') }}">
+    {{ form.csrf_token }}
+    <img style="display: block; margin: auto;" class="my-4 my-5" src="{{url_for('static', filename='images/favicon_2/apple-touch-icon.png')}}" alt="" width="72" height="57">
+    <h1 class="display-4 text-center my-5 mx-3">Please Sign In</h1>
+    {{ form.email(class="form-control my-1 mx-auto", placeholder="Email address") }}
+    {{ form.password(class="form-control mb-3 mx-auto", placeholder="Password") }}
+    <div class="checkbox form-switch mb-3 mx-3">
+      {{ form.remember_me(class="form-check-input") }}
+      {{ form.remember_me.label(class="form-check-label") }}
+    </div>
+    <div class="text-right">
+      {{ form.submit(class="btn btn-lg btn-primary my-3 mr-3") }}
+    </div>
+    
+  </form>
+
+  <p class="text-right mr-3">
+    New user?
+    <a class="s" href="{{ url_for('auth.register') }}">
+      Click here to register
+    </a>
+  </p>
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0275db" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,261.3C384,256,480,192,576,138.7C672,85,768,43,864,69.3C960,96,1056,192,1152,202.7C1248,213,1344,139,1392,101.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+  <div style="background-color: #0275db; height: 400px;"></div>
+</div>
+
+  
+{% endblock %}
