@@ -1,0 +1,14 @@
+# Thirty Login/Registration Pages in 30 days Challenge
+
+## Elevator Pitch
+The point of this project is to attempt to make thirty unique login pages and registration pages
+for a mock website within the span of a month.  This will force me to focus on quantity rather 
+than quality.
+
+## Guidelines
+Although the point is to focus on the html/css I will use a flask backend with a working login 
+system since once it's setup I shouldn't have to look at it again.  To test the different templates,
+I can just change the template that is rendered in the view function.
+
+No attached stylesheets, just do all the styling in the head tag or inline.  This isn't proper, but it 
+makes testing much faster, especially on my laptop where clearing the cache everytime gets tedious.
