@@ -1,43 +1,75 @@
 {% extends "base.html" %}
 
-{% block title %}Registration{% endblock %}
-{% block navbar %}{% endblock %}
-{% block page_content %}
-<div class="card bg-light">
-  <article class="card-body mx-auto" style="max-width: 400px;">
-    <h4 class="card-title mt-3 text-center">Create Account</h4>
+{% block head %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_1/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_1/favicon.ico') }}" type="image/x-icon">
 
-    <form method="POST" action="{{ url_for('auth.register') }}">
+  <style>
+    body {
+      background-color: #000;
+    }
+    h1 {
+      color: #a00;
+    }
+
+    input[type=text] {
+      -webkit-transition: border .35s ease-in-out;
+      transition: border .35s ease-in-out;
+      border: solid 2px #600;
+    }
+    input[type=text]:focus {
+      border: solid 3px #a00;
+    }
+
+    input[type=password] {
+      -webkit-transition: border .35s ease-in-out;
+      transition: border .35s ease-in-out;
+      border: solid 2px #600;
+    }
+    input[type=password]:focus {
+      border: solid 3px #a00;
+    }
+
+    input[type=submit] {
+      -webkit-transition: border .35s ease-in-out;
+      transition: border .35s ease-in-out;
+      border: solid 2px #600;
+      background-color: #a00;
+    }
+    input[type=submit]:focus {
+      border: solid 3px #a00;
+      background-color: #600;
+    }
+  </style>
+
+  <title>
+    {% block title %}Registration{% endblock %}
+  </title>
+
+{% endblock %}
+
+{% block page_content %}
+
+<div class="container">
+  <form method="POST" action="{{ url_for('auth.register') }}">
     {{ form.csrf_token }}
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-       </div>
-          {{ form.username(class="form-control", placeholder="Username") }}
-      </div> <!-- form-group// -->
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-       </div>
-          {{ form.email(class="form-control", placeholder="Email") }}
-      </div> <!-- form-group// -->
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-      </div>
-          {{ form.password(class="form-control", placeholder="Password") }}
-      </div> <!-- form-group// -->
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-      </div>
-          {{ form.password2(class="form-control", placeholder="Confirm Password") }}
-      </div> <!-- form-group// -->                                      
-      <div class="form-group">
-          {{ form.submit(class="btn btn-primary dark-h4")}}
-      </div> <!-- form-group// -->      
-      <p class="text-center">Have an account? <a href="{{ url_for('auth.login')}}">Log In</a> </p>                                                                 
+    <img style="display: block; margin: auto;" class="my-4" src="{{url_for('static', filename='images/favicon_1/apple-touch-icon.png')}}" alt="" width="72" height="57">
+    <h1 class="display-4 text-center my-4">Please Register</h1>
+    {{ form.username(class="form-control bg-dark text-light my-1", placeholder="Username") }}
+    {{ form.email(class="form-control bg-dark text-light my-1", placeholder="Email") }}
+    {{ form.password(class="form-control bg-dark text-light my-1", placeholder="Password") }}
+    {{ form.password2(class="form-control bg-dark text-light mt-1 mb-3", placeholder="Confirm Password") }}
+    {{ form.submit(class="text-light w-100 btn btn-lg my-3") }}
   </form>
-  </article>
-  </div> <!-- card.// -->
+
+  <p class="text-light">
+    Already signed up?
+    <a class="text-light" href="{{ url_for('auth.login') }}">
+      Click here to login.
+    </a>
+  </p>
+</div>
+
 {% endblock %}

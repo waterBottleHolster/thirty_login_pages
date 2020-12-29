@@ -1,36 +1,76 @@
 {% extends "base.html" %}
 
 {% block head %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_login.css', _external=True) }}">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_1/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_1/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      background-color: #000;
+    }
+    h1 {
+      color: #a00;
+    }
+
+    input[type=text] {
+      -webkit-transition: border .35s ease-in-out;
+      transition: border .35s ease-in-out;
+    }
+    input[type=text]:focus {
+      border: solid 3px #a00;
+    }
+    input[type=password] {
+      -webkit-transition: border .35s ease-in-out;
+      transition: border .35s ease-in-out;
+    }
+    input[type=password]:focus {
+      border: solid 3px #a00;
+    }
+    input[type=checkbox] {
+      -webkit-transition: border .35s ease-in-out;
+      transition: border .35s ease-in-out;
+      -webkit-transition: background-color .35s ease-in-out;
+      transition: background-color .35s ease-in-out;
+    }
+    input[type=checkbox]:focus {
+      border: solid 2px #000;
+      background-color: #a00;
+    }
+    
+    
+    .red-btn {
+      background-color: #a00;
+    }
+  </style>
   <title>
     {% block title %}Login{% endblock %}
   </title>
 {% endblock %}
 
-{% block navbar%}{% endblock %}
 {% block page_content %}
-<p class="text-light">
-  New user?
-  <a class="text-light" href="{{ url_for('auth.register') }}">
-    Click here to register
-  </a>
-</p>
 
-  <main class="form-signin text-light">
-    <form method="POST" action="{{ url_for('auth.login') }}">
-      {{ form.csrf_token }}
-      <img class="mb-4" src="{{url_for('static', filename='favicon/apple-touch-icon.png')}}" alt="" width="72" height="57">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-      {{ form.email(class="form-control", placeholder="Email address") }}
-      {{ form.password(class="form-control", placeholder="Password") }}
-      <div class="checkbox form-switch mb-3">
-        {{ form.remember_me(class="form-check-input") }}
-        {{ form.remember_me.label(class="form-check-label") }}
-      </div>
-      <button class="w-100 btn btn-lg dark-h4 text-light" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">© 2020</p>
-    </form>
-  </main>
+<div class="container">
+  <form method="POST" action="{{ url_for('auth.login') }}">
+    {{ form.csrf_token }}
+    <img style="display: block; margin: auto;" class="my-4" src="{{url_for('static', filename='images/favicon_1/apple-touch-icon.png')}}" alt="" width="72" height="57">
+    <h1 class="display-4 text-center my-4">Please Sign In</h1>
+    {{ form.email(class="form-control bg-dark red-field my-1", placeholder="Email address") }}
+    {{ form.password(class="form-control bg-dark red-field mb-3", placeholder="Password") }}
+    <div class="checkbox form-switch mb-3">
+      {{ form.remember_me(class="form-check-input text-light") }}
+      {{ form.remember_me.label(class="form-check-label text-light") }}
+    </div>
+    <button class="w-100 btn btn-lg red-btn text-light my-3" type="submit">Sign in</button>
+  </form>
+
+  <p class="text-light">
+    New user?
+    <a class="text-light" href="{{ url_for('auth.register') }}">
+      Click here to register
+    </a>
+  </p>
+</div>
   
 {% endblock %}
