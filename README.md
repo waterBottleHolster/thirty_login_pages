@@ -19,3 +19,7 @@ Channelled my inner Cold Lake Freeze for this one.
 ## #2 - Vanilla Theme
 I can't figure out all of the form control formatting included in Bootstrap so I'll go back to basics.
 Pick a theme that is blue and white by default.
+
+## #3 - Christmas Theme
+I'd like some plain inputs on the left hand side of the page and then a big Christmas tree pic on the 
+right hand side.  
