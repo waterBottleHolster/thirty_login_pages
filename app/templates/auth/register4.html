@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_4/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_4/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      background-color: #231709;
+      overflow: hidden;
+    }
+    .headerLine {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      height: 100%;
+      background: url(../../static/images/wood_background.jpg) repeat;
+      background-size: cover;
+    }
+  </style>
+  <title>
+    {% block title %}Register{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="">
+  <div class="headerLine" style="height: 100vh;">
+    <div class="container">
+      <form method="POST" action="{{ url_for('auth.login') }}" class="">
+        {{ form.csrf_token }}
+        <div class="text-center">
+          <img class="my-1" src="{{url_for('static', filename='images/favicon_4/apple-touch-icon.png')}}" alt="" width="72" height="57">
+        </div>
+
+        <h1 class="display-4 text-center text-light mb-5">Please Register</h1>
+
+        {{ form.username(class="form-control", placeholder="Username")}}
+        {{ form.email(class="form-control my-3", placeholder="Email address") }}
+        {{ form.password(class="form-control my-3", placeholder="Password") }}
+        {{ form.password2(class="form-control my-3", placeholder="Confirm Password") }}
+        
+        <div class="row">
+          <div class="col">
+            <p class="mb-md-3 mb-md-5"> 
+              <a class="text-light" href="{{ url_for('auth.login') }}">
+                Already signed up?
+              </a>
+            </p>
+          </div>
+          <div class="col text-right">
+            {{ form.submit(class="text-right btn btn-large btn-dark") }}
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  
+{% endblock %}
