@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_5/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_5/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      overflow: hidden;
+    }
+
+    .container-fluid {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .hover-cont {
+      position: relative;
+      width: 100%;
+    }
+    .image-class {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: 1.75s ease;
+      /*background-color: #008CBA;*/
+    }
+    .hover-cont:hover .overlay {
+      opacity: 1;
+    }
+    .vignette-shadow-ex {
+      background: rgba(0,100,0,0.4);
+      height: 100vh;
+      box-shadow: inset 0 0 100px black;
+    }
+    @media only screen and (min-width: 600px) {
+      .container {
+        width: 50%;
+      }
+      .row {
+        width: 50%;
+      }
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="hover-cont">
+  <img src="{{ url_for('static', filename='images/vancouver_island_forest.jpg') }}" alt="Avatar" class="image-class">
+  <div class="overlay vignette-shadow-ex text-center">
+    <img class="my-5" src="{{url_for('static', filename='images/favicon_5/apple-touch-icon.png')}}" alt="" width="72" height="57">
+    <h1 class="text-light display-4">Please Sign In</h1>
+    <div class="px-3 container-md">
+      <form method="POST" action="{{ url_for('auth.login') }}"> 
+        <div class="row mx-auto">
+          {{ form.email(class="form-control my-md-3 my-1 mx-auto", placeholder="Email")}}
+        </div>
+        
+        <div class="row mx-auto">
+          {{ form.password(class="form-control my-md-3 my-1 mx-auto", placeholder="Password")}}
+        </div>
+        
+        <div class="row mx-auto">
+          <div class="col-6 text-left">
+            <p class="my-md-3"> 
+              <a class="text-light" href="{{ url_for('auth.register') }}">
+                New User?
+              </a>
+            </p>
+          </div>
+          <div class="col-6">
+            <div class="checkbox form-switch my-md-3 mx-md-3 text-right">
+              {{ form.remember_me(class="form-check-input") }}
+              {{ form.remember_me.label(class="mb-md-1 mb-3 form-check-label text-light") }}
+            </div>
+          </div>
+        </div>
+        <div class="row mx-auto">
+          <div class="text-right">
+            {{ form.submit(class="text-right btn btn-large btn-dark") }}
+          </div>
+          
+        </div>
+      </form>
+    </div>
+    
+  </div>
+</div>
+
+ 
+{% endblock %}
