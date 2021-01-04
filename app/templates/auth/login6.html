@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_6/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_6/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      overflow: hidden;
+    }
+    #myImg {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+    /* Add Animation */
+    .modal-content, #caption {  
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 1.5s;
+      animation-name: zoom;
+      animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {-webkit-transform:scale(0)} 
+      to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+      from {transform:scale(0)} 
+      to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .image-darken {
+      opacity: 0.1;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+      .modal-content {
+        width: 100%;
+      }
+    }
+
+    @media only screen and (min-width: 600px) {
+      .container {
+        width: 50%;
+      }
+      .row {
+        width: 50%;
+      }
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<img id="myImg" src="{{ url_for('static', filename='images/grouse_mountain_image.jpg')}}" alt="main image of grouse mountain">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <div class="text-center" style="background-color: rgba(0,0,0,0.4); height: 100vh;">
+    <img class="my-5" src="{{url_for('static', filename='images/favicon_6/apple-touch-icon.png')}}" 
+    alt="number id icon" width="72" height="57">
+    <h1 class="text-light display-4">Please Sign In</h1>
+    <form method="POST" action="{{ url_for('auth.login') }}"> 
+      <div class="row mx-auto">
+        {{ form.email(class="form-control my-md-3 my-1 mx-auto", placeholder="Email")}}
+      </div>
+      
+      <div class="row mx-auto">
+        {{ form.password(class="form-control my-md-3 my-1 mx-auto", placeholder="Password")}}
+      </div>
+      
+      <div class="row mx-auto">
+        <div class="col-6 text-left">
+          <p class="my-md-3"> 
+            <a class="text-light" href="{{ url_for('auth.register') }}">  
+              New User?
+            </a>
+          </p>
+        </div>
+        <div class="col-6">
+          <div class="checkbox form-switch my-md-3 mx-md-3 text-right">
+            {{ form.remember_me(class="form-check-input") }}
+            {{ form.remember_me.label(class="mb-md-1 mb-3 form-check-label text-light") }}
+          </div>
+        </div>
+      </div>
+      <div class="row mx-auto">
+        <div class="text-right">
+          {{ form.submit(class="text-right text-light btn btn-large", style="background-color:#b96100") }}
+        </div>
+        
+      </div>
+    </form>
+  </div>
+  
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+ 
+{% endblock %}
