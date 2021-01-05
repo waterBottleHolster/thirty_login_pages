@@ -55,7 +55,7 @@
     }
   </style>
   <title>
-    {% block title %}Login{% endblock %}
+    {% block title %}Register{% endblock %}
   </title>
 {% endblock %}
 
@@ -67,31 +67,34 @@
   <img class="my-md-3 my-1" src="{{url_for('static', filename='images/favicon_7/apple-touch-icon.png')}}" 
     alt="number id icon" width="72" height="57">
 
-  <h1 class="display-4 my-3 text-center text-light">Please Sign In</h1>
-    <form method="POST" action="{{ url_for('auth.login') }}" style="max-width:700px;margin:auto">
+  <h1 class="display-4 my-3 text-center text-light">Please Register Below</h1>
+    <form method="POST" action="{{ url_for('auth.register') }}" style="max-width:700px;margin:auto">
       <div class="input-container">
         <i class="fa fa-envelope icon"></i>
         {{ form.email(class="input-field", placeholder="Email") }}
       </div>
       <div class="input-container">
+        <i class="fa fa-user icon"></i>
+        {{ form.username(class="input-field", placeholder="Username") }}
+      </div>
+      <div class="input-container">
         <i class="fa fa-lock icon"></i>
         {{ form.password(class="input-field", placeholder="Password")}}
       </div>
-      <div class="checkbox form-switch my-md-3 mx-md-3 text-right">
-        {{ form.remember_me(class="form-check-input") }}
-        {{ form.remember_me.label(class="mb-md-1 mb-3 form-check-label text-light") }}
+      <div class="input-container">
+        <i class="fa fa-lock icon"></i>
+        {{ form.password2(class="input-field", placeholder="Confirm Password")}}
       </div>
       <div class="text-right">
         {{ form.submit(class="text-light btn btn-large btn-primary") }}
       </div>
       <div class="text-right">
-        <p class="my-3"> 
-          <a class="text-light" href="{{ url_for('auth.register') }}">  
-            New User?
+        <p class="my-3">  
+          <a class="text-light" href="{{ url_for('auth.login') }}">  
+            Already registered?
           </a>
         </p>
       </div>
-      
     </form>
 </div>
 
