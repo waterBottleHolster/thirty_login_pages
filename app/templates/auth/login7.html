@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_6/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_6/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    .input-container {
+      display: -ms-flexbox; /* IE10 */
+      display: flex;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .icon {
+      padding: 10px;
+      background: dodgerblue;
+      color: white;
+      min-width: 50px;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border: 2px solid dodgerblue;
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<!-- Get a login page that has icons besides the input fields -->
+
+<div>
+  <img class="my-5" src="{{url_for('static', filename='images/favicon_6/apple-touch-icon.png')}}" 
+    alt="number id icon" width="72" height="57">
+
+  <h1 class="display-4">Please Sign In</h1>
+    <form method="POST" action="{{ url_for('auth.login') }}">
+      <div class="input-container">
+        <i class="fa fa-user icon"></i>
+        {{ form.email(class="input-field", placeholder="Email") }}
+  
+        <i class="fa fa-lock icon"></i>
+        {{ form.password(class="input-field", placeholder="Password")}}
+        
+      </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
