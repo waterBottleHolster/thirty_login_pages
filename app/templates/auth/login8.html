@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_8/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_8/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      overflow: hidden;
+    }
+    
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+
+    #mobile-image, #mobile-form {
+      display: none;
+    }
+    
+    #desktop-image, #desktop-form {
+      display: block;
+    }  
+    @media (max-width: 600px) {
+      #mobile-image, #mobile-form {
+        display: block;
+      }
+      #desktop-image, #desktop-form {
+        display: none;
+      }
+    }
+  
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<!-- Get a login page that has a Sask Prairie vibe -->
+
+<div style="position: fixed;">
+  <img src="{{ url_for('static', filename='images/sask_prairie_sky_mobile.jpg') }}" alt="mobile version of sask prairie" 
+    style="width:375px; height: 700px; object-fit: cover;" id="mobile-image">
+  <img src="{{ url_for('static', filename='images/sask_prairie_sky.jpg') }}" alt="desktop version of sask prairie" 
+    style="width:1600px; height: auto;" id="desktop-image">
+</div>
+
+<div class="card mx-auto text-center" style="width: 28rem; background-color: rgba(255,255,255,0.5)" id="desktop-form">
+  <div class="card-body">
+    <img class="my-md-3 my-1" src="{{url_for('static', filename='images/favicon_8/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    <h5 class="card-title display-4 mb-3">Please Sign In</h5>
+    <form method="POST" action="{{ url_for('auth.login') }}">
+      {{ form.email(class="form-control", placeholder="Email") }}
+      {{ form.password(class="form-control", placeholder="Password") }}
+      <div class="checkbox form-switch my-md-3 mx-md-3 text-right">
+        {{ form.remember_me(class="form-check-input") }}
+        {{ form.remember_me.label(class="mb-md-1 mb-3 form-check-label text-dark") }}
+      </div>
+      <div class="text-right">
+        {{ form.submit(class="btn btn-lg btn-success mb-3") }}
+      </div>
+      <div class="text-right">
+        <p class="my-3"> 
+          <a class="text-dark" href="{{ url_for('auth.register') }}">  
+            New User?
+          </a>
+        </p>
+      </div>
+      
+    </form>
+    
+  </div>
+</div>
+
+<div class="card mx-auto text-center" style="width: 20rem; background-color: rgba(255,255,255,0.5); border-radius: 15px;" id="mobile-form">
+  <div class="card-body">
+    <img class="my-md-3 my-1" src="{{url_for('static', filename='images/favicon_8/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    <h5 class="card-title display-4 mb-3">Please Sign In</h5>
+    <form method="POST" action="{{ url_for('auth.login') }}">
+      {{ form.email(class="form-control", placeholder="Email") }}
+      {{ form.password(class="form-control", placeholder="Password") }}
+      <div class="checkbox form-switch my-md-3 mx-md-3 text-right">
+        {{ form.remember_me(class="form-check-input") }}
+        {{ form.remember_me.label(class="mb-md-1 mb-2 form-check-label text-dark") }}
+      </div>
+      <div class="text-right">
+        {{ form.submit(class="btn btn btn-success mb-2") }}
+      </div>
+      <div class="text-right">
+        <p class="my-3"> 
+          <a class="text-dark" href="{{ url_for('auth.register') }}">  
+            New User?
+          </a>
+        </p>
+      </div>
+      
+    </form>
+    
+  </div>
+</div>
+{% endblock %}
