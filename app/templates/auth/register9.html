@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_9/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_9/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      overflow: hidden;
+    }
+    
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+
+    #mobile-image, #mobile-form {
+      display: block;
+    }
+    
+    #desktop-image, #desktop-form {
+      display: none;
+    }  
+    @media (min-width: 800px) {
+      #mobile-image, #mobile-form {
+        display: none;
+      }
+      #desktop-image, #desktop-form {
+        display:block;
+      }
+    }
+  </style>
+  <title>
+    {% block title %}Register{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<!--My plan for this one is to do desktop and mobile again, but with the desktop just put the fields in a row
+  across the top of the page -->
+
+<div style="position: fixed;">
+  <img src="{{ url_for('static', filename='images/tenet_mobile_wallpaper.jpg') }}" alt="mobile version of tenet movie poster" 
+    style="width:100vw; height: 100vh; object-fit:fill;" id="mobile-image">
+  <img src="{{ url_for('static', filename='images/tenet_desktop_wallpaper.jpg') }}" alt="desktop version of tenet movie poster" 
+    style="width:100vw; height: 100vh; object-fit:fill;" id="desktop-image">
+</div>
+
+<form method="POST" action="{{ url_for('auth.register') }}" class="container-fluid text-center" id="desktop-form" style="position: relative;">
+  <div class="row bg-dark">
+    <div class="col-lg-1">
+      <img class="my-md-3 my-1" src="{{url_for('static', filename='images/favicon_9/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    </div>
+    <div class="col-lg-3">
+      <h5 class="display-4 mb-3 text-light">Please Register</h5>
+    </div>
+    <div class="text-light col-lg-2">
+      {{ form.email(class="form-control mt-3", placeholder="Email") }}
+    </div>
+    <div class="text-light col-lg-2">
+      {{ form.password(class="form-control mt-3", placeholder="Password") }}
+    </div>
+    <div class="col-lg-1 text-right">
+      {{ form.submit(class="btn btn-primary my-3") }}
+    </div>
+    <div class="col-lg-2 text-right">
+      <p class="mt-4"> 
+        <a class="p-1 text-light bg-dark" href="{{ url_for('auth.login') }}" style="border-radius: 5px;">
+          Already signed up?
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="row bg-dark pb-3">
+    <div class="col-2 offset-4">
+      {{ form.username(class="form-control", placeholder="Username") }}
+    </div>
+    <div class="col-2">
+      {{ form.password2(class="form-control", placeholder="Confirm Password") }}  
+    </div>
+    
+  </div>
+</form>
+
+<form method="POST" action="{{ url_for('auth.register') }}" class="container-fluid text-center" id="mobile-form" style="position: relative;">
+  <img class="my-md-3 my-1" src="{{url_for('static', filename='images/favicon_9/apple-touch-icon.png')}}" 
+  alt="number id icon" width="72" height="57">
+  <h5 class="display-4 mb-3 text-light bg-dark">Please Register</h5>
+  <div style="display: flex; justify-content: center;" class="pb-2">
+    {{ form.email(class="bg-dark text-light", placeholder="Email") }}
+    {{ form.username(class="bg-dark text-light", placeholder="Username") }}
+  </div>
+  <div style="display: flex; justify-content: center;" class="">
+    {{ form.password(class="bg-dark text-light", placeholder="Password") }}
+    {{ form.password2(class="bg-dark text-light", placeholder="Confirm Password") }}
+  </div>
+
+  {{ form.submit(class="btn btn-secondary my-3") }}
+  <p class="mt-4"> 
+    <a class="p-1 text-light bg-dark" href="{{ url_for('auth.register') }}" style="border-radius: 5px;">
+      New User?
+    </a>
+  </p>
+</form>
+
+{% endblock %}

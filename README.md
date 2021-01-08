@@ -23,3 +23,15 @@ Pick a theme that is blue and white by default.
 ## #3 - Christmas Theme
 I'd like some plain inputs on the left hand side of the page and then a big Christmas tree pic on the 
 right hand side.  
+
+## #4
+
+## #5
+
+## #6
+
+## #7
+
+## #8
+
+## #9
