@@ -42,14 +42,14 @@
     }
   </style>
   <title>
-    {% block title %}Login{% endblock %}
+    {% block title %}Register{% endblock %}
   </title>
 {% endblock %}
 
 {% block page_content %}
 
 <!--I want a little sailboat to cross the screen -->
-<form action=" {{ url_for('auth.login') }}" method="POST">
+<form action=" {{ url_for('auth.register') }}" method="POST">
   <div class="text-center">
     <img class="my-md-3 my-1" src="{{url_for('static', filename='images/favicon_12/apple-touch-icon.png')}}" 
     alt="number id icon" width="72" height="57">
@@ -57,7 +57,7 @@
   
   <div class="row grad-div my-md-3 my-1 py-md-2">
     <div class="col-md-3 col-10 mx-auto">
-      <h1 class="display-4 text-center">Please Sign In</h1>
+      <h1 class="display-4 text-center">Please Register</h1>
     </div>
   </div>
   
@@ -69,24 +69,27 @@
   
   <div class="row grad-div mt-2 mb-md-3 mb-1 py-md-2">
     <div class="col-md-3 col-10 mx-auto">
+      {{ form.password(class="form-control", placeholder="Username") }}
+    </div>
+  </div>
+  
+  <div class="row grad-div mt-2 mb-md-3 mb-1 py-md-2">
+    <div class="col-md-3 col-10 mx-auto">
       {{ form.password(class="form-control", placeholder="Password") }}
     </div>
   </div>
   
-  <div class="row grad-div my-md-2 py-1 text-center">
-    <div class="col-md-2 col-6 mx-auto">
-      <div class="checkbox form-switch pt-2">
-        {{ form.remember_me(class="form-check-input") }}
-        {{ form.remember_me.label() }}
-      </div>
+  <div class="row grad-div mt-2 mb-md-3 mb-1 py-md-2">
+    <div class="col-md-3 col-10 mx-auto">
+      {{ form.password2(class="form-control", placeholder="Confirm Password") }}
     </div>
   </div>
   
   <div class="row grad-div text-center">
     <div class="col-md-2 col-6 mx-auto">
       <p class="my-md-3 my-2"> 
-        <a class="p-1" href="{{ url_for('auth.register') }}">
-          New User?
+        <a class="p-1" href="{{ url_for('auth.login') }}">
+          Already have an account?
         </a>
       </p>
     </div>
