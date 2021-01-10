@@ -46,7 +46,7 @@
   <img src="{{ url_for('static', filename='images/sask_prairie_sky_mobile.jpg') }}" alt="mobile version of sask prairie" 
     style="width:375px; height: 700px; object-fit: cover;" id="mobile-image">
   <img src="{{ url_for('static', filename='images/sask_prairie_sky.jpg') }}" alt="desktop version of sask prairie" 
-    style="width:1600px; height: auto;" id="desktop-image">
+    style="width:auto; height: 100vh;" id="desktop-image">
 </div>
 
 <div class="card mx-auto text-center" style="width: 28rem; background-color: rgba(255,255,255,0.5)" id="desktop-form">
@@ -79,7 +79,7 @@
   <div class="card-body">
     <img class="my-md-3 my-1" src="{{url_for('static', filename='images/favicon_8/apple-touch-icon.png')}}" 
       alt="number id icon" width="72" height="57">
-    <h5 class="card-title display-4 mb-3">Please Sign In</h5>
+    <h5 class="card-title display-4 mb-3">Please Register</h5>
     <form method="POST" action="{{ url_for('auth.register') }}">
       {{ form.username(class="form-control my-2", placeholder="Username") }}
       {{ form.email(class="form-control my-2", placeholder="Email") }}
@@ -90,7 +90,7 @@
       </div>
       <div class="text-right">
         <p class="my-3"> 
-          <a class="text-dark" href="{{ url_for('auth.register') }}">  
+          <a class="text-dark" href="{{ url_for('auth.login') }}">  
             Already registered? Sign in here...
           </a>
         </p>
