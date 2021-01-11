@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_12/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_12/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      background-color: #000;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+
+    @keyframes elect-impulse1 {
+      0% {transform: translate(0,0);}
+      100% {transform: translate(0, 10%);}
+    }
+    @keyframes elect-impulse2 {
+      0% {transform: translate(0, 0);}
+      100% {transform: translate(20%, 0);}
+    }
+
+    #circle1 {
+      animation-name: elect-impulse1;
+      animation-duration: 1s;
+      animation-iteration-count:1;
+      animation-timing-function: linear;
+    }
+
+    #circle2 {
+      animation-name: elect-impulse2;
+      animation-duration: 1s;
+      animation-iteration-count:1;
+      animation-timing-function: linear;
+      animation-delay: 1s;
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+
+<svg height="100vh" width="100vw">
+  <line x1="5%" y1="0" x2="5%" y2="10%" style="stroke:yellow; stroke-width:2" />
+  <line x1="5%" y1="10%" x2="25%" y2="10%" style="stroke:yellow; stroke-width:2" />
+  <line x1="25%" y1="5%" x2="25%" y2="40%" style="stroke:yellow; stroke-width:2" />
+  <circle id="circle1" cx="5%" cy="0" r="5" stroke="yellow" stroke-width="2" fill="yellow" />
+  <circle id="circle2" cx="5%" cy="10%" r="5" stroke="yellow" stroke-width="2" fill="yellow" />
+  
+  
+</svg>
+
+
+{% endblock %}

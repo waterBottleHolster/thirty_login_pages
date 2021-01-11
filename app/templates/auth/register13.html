@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_13/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_13/favicon.ico') }}" type="image/x-icon">
+
+  <style>
+    body {
+      background-color: #000;
+      overflow: hidden;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+
+    .lightning-bolt {
+      width: 30vw;
+      transform: scaleX(-1);
+    }
+    .lightning-bolt2 {
+      width: 30vw;
+    }
+
+    @media (min-width: 800px) {
+      .lightning-bolt, .lightning-bolt2 {
+        width: 15vw;
+      }
+    }
+  </style>
+  <title>
+    {% block title %}Register{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+<form action="{{ url_for('auth.login') }}" method="POST">
+  <div class="row text-center">
+    <div class="col-3 mx-auto">
+      <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_13/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-5 col-8 mx-auto">
+      <h1 class="text-light my-2">Please Register Below</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-10 mx-auto">
+      {{ form.email(class="form-control my-md-3 my-2", placeholder="Email") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-10 mx-auto">
+      {{ form.username(class="form-control my-md-3 my-2", placeholder="Username") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-10 mx-auto">
+      {{ form.password(class="form-control my-md-3 my-2", placeholder="Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-10 mx-auto">
+      {{ form.password2(class="form-control my-md-3 my-2", placeholder="Confirm Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-6">
+      <p class="my-md-3 my-2"> 
+        <a class="p-1 link-warning" href="{{ url_for('auth.login') }}">
+          Already registered?
+        </a>
+      </p>
+    </div>
+    <div class="col-md-6 col-6 my-2">
+      {{ form.submit(class="btn btn-warning")}}
+    </div>
+  </div>
+</form>
+
+
+<div class="row justify-content-center">
+  <div class="lightning-bolt"><?xml version="1.0" encoding="iso-8859-1"?>
+    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+    <g>
+      <polygon style="fill:#F7CF52;" points="157.055,0 90.798,196.319 164.417,196.319 88.344,400 289.571,159.509 218.405,159.509 
+        311.656,0 	"/>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    </svg>
+  </div>
+  <div class="lightning-bolt2"><?xml version="1.0" encoding="iso-8859-1"?>
+    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+    <g>
+      <polygon style="fill:#F7CF52;" points="157.055,0 90.798,196.319 164.417,196.319 88.344,400 289.571,159.509 218.405,159.509 
+        311.656,0 	"/>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    </svg>
+  </div>
+</div>
+
+
+
+{% endblock %}
