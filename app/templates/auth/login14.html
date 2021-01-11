@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_14/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_14/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background-color: #000;
+      overflow: hidden;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+    /* ============================================================================================== 
+    SED Innovations
+    https://sed.am
+    https://mkrtchyan.ga
+    ================================================================================================= */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color:rgba(33, 33, 33, 0.9);
+        color:#ffffff;
+        display:block;
+        font: 14px/1.3 Arial,sans-serif;
+        height:50px;
+        position:relative;
+        z-index:5;
+    }
+    h2{
+        margin-top: 30px;
+        text-align: center;
+    }
+    header h2{
+        font-size: 22px;
+        margin: 0 auto;
+        padding: 10px 0;
+        width: 80%;
+        text-align: center;
+    }
+    header a, a:visited {
+        text-decoration:none;
+        color:#fcfcfc;
+    }
+
+    @keyframes move-twink-back {
+        from {background-position:0 0;}
+        to {background-position:-10000px 5000px;}
+    }
+    @-webkit-keyframes move-twink-back {
+        from {background-position:0 0;}
+        to {background-position:-10000px 5000px;}
+    }
+    @-moz-keyframes move-twink-back {
+        from {background-position:0 0;}
+        to {background-position:-10000px 5000px;}
+    }
+    @-ms-keyframes move-twink-back {
+        from {background-position:0 0;}
+        to {background-position:-10000px 5000px;}
+    }
+
+    @keyframes move-clouds-back {
+        from {background-position:0 0;}
+        to {background-position:10000px 0;}
+    }
+    @-webkit-keyframes move-clouds-back {
+        from {background-position:0 0;}
+        to {background-position:10000px 0;}
+    }
+    @-moz-keyframes move-clouds-back {
+        from {background-position:0 0;}
+        to {background-position:10000px 0;}
+    }
+    @-ms-keyframes move-clouds-back {
+        from {background-position: 0;}
+        to {background-position:10000px 0;}
+    }
+
+    .stars, .twinkling, .clouds {
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    .stars {
+      background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+      z-index:0;
+    }
+
+    .twinkling{
+      background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+      z-index:1;
+
+      -moz-animation:move-twink-back 200s linear infinite;
+      -ms-animation:move-twink-back 200s linear infinite;
+      -o-animation:move-twink-back 200s linear infinite;
+      -webkit-animation:move-twink-back 200s linear infinite;
+      animation:move-twink-back 200s linear infinite;
+    }
+
+    .clouds{
+        background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+        z-index:3;
+
+      -moz-animation:move-clouds-back 200s linear infinite;
+      -ms-animation:move-clouds-back 200s linear infinite;
+      -o-animation:move-clouds-back 200s linear infinite;
+      -webkit-animation:move-clouds-back 200s linear infinite;
+      animation:move-clouds-back 200s linear infinite;
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+ 
+<div class="stars"></div>
+<div class="twinkling"></div>
+<div class="clouds"></div> 
+
+<form action="{{ url_for('auth.login') }}" method="POST" style="position: relative; z-index: 1000;">
+  <div class="row text-center">
+    <div class="col-6 mx-auto">
+      <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_14/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-10 mx-auto">
+      <h1 class="display-4 text-light mb-xl-5 mb-md-3 mb-1">Please Sign In</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.email(class="form-control", placeholder="Email") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password(class="form-control", placeholder="Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-10 mx-auto">
+      <div class="checkbox form-switch pt-2">
+        {{ form.remember_me(class="form-check-input") }}
+        {{ form.remember_me.label(class="text-light") }}
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-6">
+      <p class="my-md-3 my-2"> 
+        <a class="p-1 link-warning" href="{{ url_for('auth.register') }}">
+          New User?
+        </a>
+      </p>
+    </div>
+    <div class="col-md-6 col-6 my-2">
+      {{ form.submit(class="btn btn-dark")}}
+    </div>
+  </div>
+  
+</form>
+
+
+
+{% endblock %}
