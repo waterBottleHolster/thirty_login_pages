@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_16/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_16/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background-image: radial-gradient(#0e3e52, #197195);
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+
+    @keyframes plane1-traverse {
+      from {top: 54%; left: -4%}
+      to {top: 0%; left: 50%}
+    }
+
+    @keyframes contrail1-traverse {
+      from {top: 40%; left: -109%;}
+      to {top: -20%; left: -69%;}
+    }
+    .plane1 {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      top: 50%;
+      left: 0%;
+      transform: rotate(10deg);
+      animation-name: plane1-traverse;
+      animation-duration: 30s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    .contrail1 {
+      position: absolute;
+      top: 50%;
+      left: -30%;
+      height: 200%;
+      width: auto;
+      transform: rotate(100deg);
+      animation-name: contrail1-traverse;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    
+    .contrail2 {
+      position: absolute;
+      top: 50%;
+      left: -30%;
+      height: 200%;
+      width: auto;
+      transform: rotate(100deg);
+      animation-name: contrail1-traverse;
+      animation-duration: 22s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    .cloud1 {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+    }
+
+
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<!--I want this one to be an animated one where airplanes are 
+  passing overhead in the sky leaving contrails-->
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve" class="plane1">
+ <defs
+    id="defs4" />
+ <g
+    transform="translate(-147.06733,-109.44716)">
+   <path
+      d="M 157.98695,184.38488 L 173.37483,168.20017 C 182.38616,159.18884 197.56012,162.31477 197.56012,162.31477 L 242.58958,168.47612 L 265.39575,146.16045 C 277.41087,134.35989 288.26269,152.4142 283.54247,158.63631 L 271.83305,172.24635 L 320.32641,181.22794 L 336.78707,162.03882 C 354.38063,141.01237 367.47041,159.95529 359.53185,171.11218 L 348.89521,184.56906 L 421.75804,194.07153 C 484.40828,133.78139 509.98537,108.77262 526.46939,123.63021 C 543.05967,138.5836 513.71315,168.38877 456.64135,227.17701 L 467.00204,302.24678 L 482.26714,289.52597 C 491.27847,282.01653 507.27901,294.06392 490.75822,309.72648 L 469.76089,329.52825 L 478.61969,378.66527 L 491.73923,368.58052 C 503.32523,359.35463 517.39476,371.55518 501.7322,388.29052 L 480.88803,409.28786 C 480.02981,409.93153 487.69305,452.38631 487.69305,452.38631 C 492.41327,473.19821 480.67347,480.80195 480.67347,480.80195 L 466.35838,493.27782 L 411.97962,339.67439 C 407.47395,326.15738 396.0546,311.47862 376.97351,313.22076 C 366.8894,314.29354 341.41552,331.49026 337.98263,335.56682 L 279.00579,392.27531 C 277.5039,393.34809 288.07915,465.99635 288.07915,465.99635 C 288.07915,468.14191 269.38054,492.66454 269.38054,492.66454 L 232.01433,426.14725 L 213.56128,434.7301 L 224.35108,417.93211 L 157.06733,379.9526 L 182.29502,361.49956 C 194.31014,364.28878 257.3034,371.36975 258.59073,370.72608 C 258.59073,370.72608 309.88762,319.85344 312.81633,316.77643 C 329.76623,298.96831 335.46935,292.31456 338.04402,283.51778 C 340.6208,274.71377 336.23117,261.81195 309.62838,245.4769 C 272.93937,222.94855 157.98695,184.38488 157.98695,184.38488 z"
+      id="path3166"
+      style="fill:#000000;stroke:none;" />
+ </g>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="cloud1">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#fff;
+      }
+      </style>
+  </defs>
+    <path style="fill:#fff;fill-opacity:1;stroke:none" d="M 7.5 2 A 4.5 4.5 0 0 0 3 6.5 A 4.5 4.5 0 0 0 3.0527344 7.15625 A 3 3 0 0 0 1 10 A 3 3 0 0 0 4 13 L 11.5 13 A 3.5 3.5 0 0 0 15 9.5 A 3.5 3.5 0 0 0 11.970703 6.0351562 A 4.5 4.5 0 0 0 7.5 2 z M 7.5 3 A 3.5 3.5 0 0 1 11 6.5 A 3.5 3.5 0 0 1 10.949219 7.0644531 A 2.5 2.5 0 0 1 11.5 7 A 2.5 2.5 0 0 1 14 9.5 A 2.5 2.5 0 0 1 11.5 12 L 4 12 A 2 2 0 0 1 2 10 A 2 2 0 0 1 4 8 A 2 2 0 0 1 4.3574219 8.0332031 A 3.5 3.5 0 0 1 4 6.5 A 3.5 3.5 0 0 1 7.5 3 z " id="path4139" class="ColorScheme-Text"></path>
+</svg>
+
+<svg viewbox="0 0 400 400" class="contrail1">
+  <line x1="0" y1="0" x2="100%" y2="100%" style="stroke:rgba(255,255,255,0.4);stroke-width:1" />
+</svg>
+
+<form action="{{ url_for('auth.register') }}" method="POST" style="position: relative;">
+  <div class="row text-center">
+    <div class="col-6 mx-auto">
+      <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_16/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-10 mx-auto">
+      <h1 class="display-4 mb-xl-5 mb-md-3 mb-1 text-light">Please Register</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.email(class="form-control", placeholder="Email") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.username(class="form-control", placeholder="Username") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password(class="form-control", placeholder="Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-6">
+      <p class="my-md-3 my-2"> 
+        <a class="p-1 link-light" href="{{ url_for('auth.login') }}">
+          Already registered?
+        </a>
+      </p>
+    </div>
+    <div class="col-md-6 col-6 my-2">
+      {{ form.submit(class="btn btn-light")}}
+    </div>
+  </div>
+  
+</form>
+
+{% endblock %}
