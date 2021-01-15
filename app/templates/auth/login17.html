@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_17/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_17/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background-image: radial-gradient(#0e3e52, #08662c);
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+    .backDoor
+    {
+      background-color: #333;
+      position:relative;
+      width:80vw;
+      height:90vh;
+      
+      margin: 0 auto;
+      margin-top:50px;
+    }
+
+    .door
+    {
+      background-color: #ccc;
+      position:absolute;
+      top:0px;
+      left:0px;
+      width:80vw;
+      height:90vh;
+    
+      transform-origin: left;
+      /*Speed of the Door animation*/
+      transition: all 0.5s ease-in-out;
+    }
+
+    .doorOpen
+    {
+      /*prespectiv creates the door open effect*/
+      transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+
+<div class="backDoor">
+  <form action="{{ url_for('auth.login') }}" method="POST" style="position: relative;">
+    <div class="row text-center">
+      <div class="col-6 mx-auto">
+        <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_17/apple-touch-icon.png')}}" 
+        alt="number id icon" width="72" height="57">
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-10 mx-auto">
+        <h1 class="display-4 mb-xl-5 mb-md-3 mb-1 text-light">Please Sign In</h1>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+        {{ form.email(class="form-control", placeholder="Email") }}
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+        {{ form.password(class="form-control", placeholder="Password") }}
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-6 col-10 mx-auto">
+        <div class="checkbox form-switch pt-2">
+          {{ form.remember_me(class="form-check-input") }}
+          {{ form.remember_me.label(class="text-light") }}
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-6 col-6">
+        <p class="my-md-3 my-2"> 
+          <a class="p-1 link-light" href="{{ url_for('auth.register') }}">
+            New User?
+          </a>
+        </p>
+      </div>
+      <div class="col-md-6 col-6 my-2">
+        {{ form.submit(class="btn btn-light")}}
+      </div>
+    </div>
+    
+  </form>
+  <div class="door">  
+  </div>
+</div>
+
+
+<script>
+  var element = document.querySelector(".door");
+  element.addEventListener("click", toggleDoor);
+
+  function toggleDoor() {
+    element.classList.toggle("doorOpen");
+  }
+</script>
+
+{% endblock %}
