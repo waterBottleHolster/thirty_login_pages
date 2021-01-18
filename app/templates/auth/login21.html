@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_21/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_21/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background-image: linear-gradient(to right, rgb(255,215,0), rgb(218,168,70));
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+    .polka-dot-bg {
+      background-image:
+        radial-gradient(red 20%, transparent 0), 
+        radial-gradient(brown 20%, transparent 0);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="polka-dot-bg" style="height: 100vh; width: 100vw; position: absolute; top: 0; left: 0; filter: blur(5px);"></div>
+
+<form action="{{ url_for('auth.login') }}" method="POST">
+  <div class="row text-center">
+    <div class="col-6 mx-auto">
+      <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_21/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-10 mx-auto">
+      <h1 class="display-4 mb-xl-5 mb-md-3 pb-2 text-light"><strong>Please Sign In</strong></h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.email(class="form-control", placeholder="Email") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password(class="form-control", placeholder="Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-10 mx-auto">
+      <div class="checkbox form-switch pt-2"><strong>
+        {{ form.remember_me(class="form-check-input") }}
+        {{ form.remember_me.label(class="text-light") }}
+        </strong> 
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-6">
+      <p class="my-md-3 my-2"> 
+        <a class="p-1 link-light" href="{{ url_for('auth.register') }}">
+          <strong>New User?</strong>
+        </a>
+      </p>
+    </div>
+    <div class="col-md-6 col-6 my-2">
+      {{ form.submit(class="btn btn-danger")}}
+    </div>
+  </div>
+  
+</form>
+
+
+{% endblock %}
