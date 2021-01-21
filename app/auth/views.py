@@ -17,7 +17,7 @@ def login():
                 next = url_for('main.index')
             return redirect(next)
         flash('Invalid Username or Password')
-    return render_template('auth/login22.html', form=form)
+    return render_template('auth/login23.html', form=form)
 
 @auth.route('/logout')
 @login_required
@@ -37,4 +37,4 @@ def register():
         db.session.commit()
         flash('You can now login!')
         return redirect(url_for('auth.login'))
-    return render_template('auth/register22.html', form=form)
+    return render_template('auth/register23.html', form=form)
