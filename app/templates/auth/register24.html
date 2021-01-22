@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_24/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_24/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background-image: linear-gradient(135deg,#ffc740,#cb9050);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .wrap {
+      position: relative;
+      top: 1em;
+    }
+    .upper, .lower {
+      display: flex;
+      width: 100vw;
+      justify-content: space-between;
+    }
+    .lower {
+      margin-left: 3vh;
+      position: relative;
+      top: 0em;
+    }
+    .upper img {
+      width: 2vh;
+      height: 5vh;
+      opacity: 0;
+      animation: fadeIn, fadeOut;
+      animation-duration: 9s, 9s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      transform: rotate(90deg);
+    }
+    .lower img {
+      width: 2vh;
+      height: 5vh;
+      opacity: 0;
+      animation: fadeIn, fadeOut;
+      animation-duration: 9s, 9s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      transform: scaleY(-1) rotate(90deg) ;
+    }
+
+    @keyframes fadeIn {
+      10% {opacity: 1};
+      100% {opacity: 1};
+    }
+    @keyframes fadeOut {
+      25% {opacity: 0};
+      100% {opacity: 0};
+    }
+    
+    .upper img:first-child {
+      animation-delay: 0.5s, 3.5s;
+    }
+    .lower img:first-child {
+      animation-delay: 1s, 4s;
+    }
+    .upper img:nth-child(2) {
+      animation-delay: 1.5s, 4.5s;
+    }
+    .lower img:nth-child(2) {
+      animation-delay: 2s, 5s;
+    }
+    .upper img:nth-child(3) {
+      animation-delay: 2.5s, 5.5s;
+    }
+    .lower img:nth-child(3) {
+      animation-delay: 3s, 6s;
+    }
+    .upper img:nth-child(4) {
+      animation-delay: 3.5s, 6.5s;
+    }
+    .lower img:nth-child(4) {
+      animation-delay: 4s, 7s;
+    }
+    .upper img:nth-child(5) {
+      animation-delay: 4.5s, 7.5s;
+    }
+    .lower img:nth-child(5) {
+      animation-delay: 5s, 8s;
+    }
+    .upper img:nth-child(6) {
+      animation-delay: 5.5s, 8.5s;
+    }
+    .lower img:nth-child(6) {
+      animation-delay: 6s, 9s;
+    }
+    .upper img:nth-child(7) {
+      animation-delay: 6.5s, 9.5s;
+    }
+    .lower img:nth-child(7) {
+      animation-delay: 7s, 10s;
+    }
+    .upper img:nth-child(8) {
+      animation-delay: 7.5s, 10.5s;
+    }
+    .lower img:nth-child(8) {
+      animation-delay: 8s, 11s;
+    }
+
+  </style>
+  <title>
+    {% block title %}Login{% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="wrap">
+  <div class="upper">
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+
+  </div>
+  <div class="lower">
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+    <img src="../../static/images/footprint_leaves_vertical.gif" />
+
+  </div>
+
+  
+  
+</div>
+
+<form action="{{ url_for('auth.register') }}" method="POST">
+  <div class="row text-center">
+    <div class="col-6 mx-auto">
+      <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_24/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-10 mx-auto">
+      <h1 class="display-4 mb-xl-5 mb-md-3 pb-2 text-light"><strong>Please Register Below</strong></h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.email(class="form-control purple-entry", placeholder="Email") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.username(class="form-control purple-entry", placeholder="Username") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password(class="form-control purple-entry", placeholder="Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password2(class="form-control purple-entry", placeholder="Confirm Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-6">
+      <p class="my-md-3 my-2"> 
+        <a class="p-1 link-light" href="{{ url_for('auth.login') }}">
+          <strong> Already a user? </strong>
+        </a>
+      </p>
+    </div>
+    <div class="col-md-6 col-6 my-2">
+      {{ form.submit(class="btn btn-primary font-weight-bold")}}
+    </div>
+  </div>
+  
+</form>
+
+
+
+
+{% endblock %}
