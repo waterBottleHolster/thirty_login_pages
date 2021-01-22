@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_26/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_26/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background: #000;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .vertical-center {
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;   
+      margin: auto;
+      transform: translateY(15%);
+    }
+  </style>
+  <title>
+    {% block title %} Registration {% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<form action="{{ url_for('auth.register') }}" method="POST" class="vertical-center">
+  <table class="table table-striped table-hover table-bordered table-dark text-center">
+    <thead>
+      <tr>
+        <td colspan="3"> <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_26/apple-touch-icon.png')}}" style="width: 5em;" ></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="3"><h1 class="display-4 mb-xl-5 mb-md-3 pb-2 text-light"><strong>Please Register</strong></h1></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>{{ form.email(class="form-control shadow-warning", placeholder="Email") }}</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>{{ form.username(class="form-control shadow-warning", placeholder="Username") }}</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>{{ form.password(class="form-control shadow-warning", placeholder="Password") }}</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>{{ form.password2(class="form-control shadow-warning", placeholder="Confirm Password") }}</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">
+          <a class="p-1 link-light" href="{{ url_for('auth.login') }}">
+            <strong> Already a User? </strong>
+          </a>
+        </td>
+        <td></td>
+        <td class="text-left">{{ form.submit(class="btn btn-secondary font-weight-bold")}}</td>
+      </tr>
+    
+    </tbody>
+  </table>
+</form>
+
+
+
+
+{% endblock %}
