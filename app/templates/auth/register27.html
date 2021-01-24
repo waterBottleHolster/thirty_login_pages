@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_27/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_27/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background-image: #000;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+    .rl-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+    .dimmer-rl-bg {
+      filter: brightness(50%);
+    }
+    .form-invisible {
+      display: none;
+      position: relative;
+    }
+    @media (min-width: 800px) {
+      #mobile-image {
+        display: none;
+      }
+      #desktop-image {
+        display:block;
+      }
+    }
+    .btn-orange {
+      background-color: #fc680c;
+    }
+    .btn-orange:focus {
+      box-shadow: 0 0 0 0.25rem rgb(252 104 12 / 25%);
+    }
+  </style>
+  <title>
+    {% block title %} Registration {% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<img src="{{ url_for('static', filename='images/rl_kickoff_wallpaper.jpg') }}" alt="rocket league kickoff moment" 
+  class="rl-bg" id="desktop-image">
+<img src="{{ url_for('static', filename='images/rl_ranks_wallpaper.jpg') }}" alt="rocket league ranks mobile image" 
+  class="rl-bg" id="mobile-image">
+
+<form action="{{ url_for('auth.login') }}" method="POST" class="form-invisible">
+  <div class="row text-center">
+    <div class="col-6 mx-auto">
+      <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_27/apple-touch-icon.png')}}" 
+      alt="number id icon" width="72" height="57">
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-10 mx-auto">
+      <h1 class="display-4 mb-xl-5 mb-md-3 pb-2 text-light">Please Register Below</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.email(class="form-control shadow-warning", placeholder="Email") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.username(class="form-control shadow-warning", placeholder="Username") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password(class="form-control shadow-warning", placeholder="Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-8 col-10 mx-auto mb-xl-3 mb-1">
+      {{ form.password2(class="form-control shadow-warning", placeholder="Confirm Password") }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-6">
+      <p class="my-md-3 my-2"> 
+        <a class="p-1 link-light" href="{{ url_for('auth.login') }}">
+          <strong> Already a User? </strong>
+        </a>
+      </p>
+    </div>
+    <div class="col-md-6 col-6 my-2">
+      {{ form.submit(class="btn btn-orange text-light font-weight-bold")}}
+    </div>
+  </div>
+  
+</form>
+
+
+<script>
+  var element1 = document.querySelector("#desktop-image");
+  var element2 = document.querySelector("#mobile-image");
+  var element3 = document.querySelector("form");
+  element1.addEventListener("click", toggleDim);
+  element2.addEventListener("click", toggleDim);
+
+  function toggleDim() {
+    element1.classList.toggle("dimmer-rl-bg");
+    element2.classList.toggle("dimmer-rl-bg");
+    element3.classList.toggle("form-invisible");
+  }
+</script>
+
+{% endblock %}
