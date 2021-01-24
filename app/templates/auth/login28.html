@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Links to the site's favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon_28/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon_28/favicon.ico') }}" type="image/x-icon">
+  <style>
+    body {
+      background-color  : #000;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .icon {
+      padding: 10px;
+      background:dodgerblue;
+      color: white;
+      min-width: 50px;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    .input-container {
+      display: -ms-flexbox; /* IE10 */
+      display: flex;
+      width: 50vh;
+      margin-bottom: 15px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border: 2px solid dodgerblue;
+    }
+
+    .custom-svg {
+      position: absolute;
+      top: -15em;
+      transition: top 3s;
+      opacity: 0;
+      z-index: -3000;
+    }
+    #svg1 {
+      left: -2em;
+    }
+    #svg2 {
+      left: 8em;
+    }
+    #svg3 {
+      left: 18em;
+    }
+    #svg4 {
+      left: 28em;
+    }
+    #svg5 {
+      left: 38em;
+    }
+    #svg6 {
+      left: 48em;
+    }
+    #svg7 {
+      left: 58em;
+    }
+    #svg8 {
+      left: 68em;
+    }
+    #svg9 {
+      left: 78em;
+    }
+    #svg10 {
+      left: 88em;
+    }
+    #svg11 {
+      left: 98em;
+    }
+    #svg12 {
+      left: 108em;
+    }
+    
+    
+  </style>
+  <title>
+    {% block title %} Login {% endblock %}
+  </title>
+{% endblock %}
+
+{% block page_content %}
+
+<svg height="210" width="200" id='svg1' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg2' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg3' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg4' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg5' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg6' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg7' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg8' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg9' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg10' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg11' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+<svg height="210" width="200" id='svg12' class="custom-svg">
+  <polygon points="0,0 200,0 100,210" style="fill:white;stroke:black;stroke-width:1" />
+</svg>
+
+
+
+
+
+<form action="{{ url_for('auth.login') }}" method="POST" class="text-center">
+  <img class="my-md-3 mt-5 mb-1" src="{{url_for('static', filename='images/favicon_28/apple-touch-icon.png')}}" 
+    alt="number id icon" width="72" height="57">
+
+  <h1 class="display-4 mb-xl-5 mb-md-3 pb-2 text-dark text-center">Please Sign In</h1>
+
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    {{ form.email(class="input-field", placeholder="Email") }}
+  </div>
+  <div class="input-container">
+    <i class="fa fa-lock icon"></i>
+    {{ form.password(class="input-field", placeholder="Password") }}
+  </div>
+  <div class="input-container">
+    <div class="checkbox form-switch pt-2"><strong>
+      {{ form.remember_me(class="form-check-input") }}
+      {{ form.remember_me.label(class="text-light") }}
+      </strong> 
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-md-6 col-6">
+      <p class="my-md-3 my-2"> 
+        <a class="p-1 link-light" href="{{ url_for('auth.register') }}">
+          <strong> New User? </strong>
+        </a>
+      </p>
+    </div>
+    <div class="col-md-6 col-6 my-2">
+      {{ form.submit(class="btn btn-primary text-light font-weight-bold")}}
+    </div>
+  </div>
+  
+</form>
+
+<script>
+  document.getElementById('email').addEventListener("mouseover", mouseOver);
+  document.getElementById('password').addEventListener("mouseover", mouseOver);
+  document.getElementById('submit').addEventListener("mouseover", mouseOver);
+  
+  document.getElementById('email').addEventListener("mouseout", mouseOut);
+  document.getElementById('password').addEventListener("mouseout", mouseOut);
+  document.getElementById('submit').addEventListener("mouseout", mouseOut);
+  
+  function mouseOver() {
+    //alert('here');
+    document.getElementById("svg1").style.top = "15em";
+    document.getElementById("svg1").style.opacity = "1";
+    document.getElementById("svg2").style.top = "13em";
+    document.getElementById("svg2").style.opacity = "1";
+    document.getElementById("svg3").style.top = "11em";
+    document.getElementById("svg3").style.opacity = "1";
+    document.getElementById("svg4").style.top = "9em";
+    document.getElementById("svg4").style.opacity = "1";
+    document.getElementById("svg5").style.top = "7em";
+    document.getElementById("svg5").style.opacity = "1";
+    document.getElementById("svg6").style.top = "6em";
+    document.getElementById("svg6").style.opacity = "1";
+    document.getElementById("svg7").style.top = "6em";
+    document.getElementById("svg7").style.opacity = "1";
+    document.getElementById("svg8").style.top = "7em";
+    document.getElementById("svg8").style.opacity = "1";
+    document.getElementById("svg9").style.top = "9em";
+    document.getElementById("svg9").style.opacity = "1";
+    document.getElementById("svg10").style.top = "11em";
+    document.getElementById("svg10").style.opacity = "1";
+    document.getElementById("svg11").style.top = "13em";
+    document.getElementById("svg11").style.opacity = "1";
+    document.getElementById("svg12").style.top = "15em";
+    document.getElementById("svg12").style.opacity = "1";
+  }
+
+  function mouseOut() {
+    document.getElementById("svg1").style.top = "-5em";
+    document.getElementById("svg1").style.opacity = "0";
+    document.getElementById("svg2").style.top = "-5em";
+    document.getElementById("svg2").style.opacity = "0";
+    document.getElementById("svg3").style.top = "-5em";
+    document.getElementById("svg3").style.opacity = "0";
+    document.getElementById("svg4").style.top = "-5em";
+    document.getElementById("svg4").style.opacity = "0";
+    document.getElementById("svg5").style.top = "-5em";
+    document.getElementById("svg5").style.opacity = "0";
+    document.getElementById("svg6").style.top = "-5em";
+    document.getElementById("svg6").style.opacity = "0";
+    document.getElementById("svg7").style.top = "-5em";
+    document.getElementById("svg7").style.opacity = "0";
+    document.getElementById("svg8").style.top = "-5em";
+    document.getElementById("svg8").style.opacity = "0";
+    document.getElementById("svg9").style.top = "-5em";
+    document.getElementById("svg9").style.opacity = "0";
+    document.getElementById("svg10").style.top = "-5em";
+    document.getElementById("svg10").style.opacity = "0";
+    document.getElementById("svg11").style.top = "-5em";
+    document.getElementById("svg11").style.opacity = "0";
+    document.getElementById("svg12").style.top = "-5em";
+    document.getElementById("svg12").style.opacity = "0";
+  }
+</script>
+{% endblock %}
